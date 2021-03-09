@@ -1,5 +1,6 @@
 declare namespace Components {
     namespace Schemas {
+        export type BlankEnum = "";
         export type Case = {
             readonly id: number
             case_id?: string | null
@@ -38,7 +39,7 @@ declare namespace Components {
                 readonly observation_choices: Observation[]
                 readonly situation_choices: any[]
                 readonly suggest_next_visit_choices: SuggestNextVisit[]
-                fraud_predict?: boolean
+                fraud_prediction_model?: FraudPredictionModelEnum | BlankEnum | NullEnum
                 readonly marked_stadia: StadiumLabel[]
                 show_issuemelding?: boolean
                 show_vakantieverhuur?: boolean
@@ -54,7 +55,7 @@ declare namespace Components {
                 readonly observation_choices: Observation[]
                 readonly situation_choices: any[]
                 readonly suggest_next_visit_choices: SuggestNextVisit[]
-                fraud_predict?: boolean
+                fraud_prediction_model?: FraudPredictionModelEnum | BlankEnum | NullEnum
                 readonly marked_stadia: StadiumLabel[]
                 show_issuemelding?: boolean
                 show_vakantieverhuur?: boolean
@@ -91,6 +92,7 @@ declare namespace Components {
             }
             readonly sync_date: string // date-time
         }
+        export type FraudPredictionModelEnum = "vakantieverhuur" | "onderhuur";
         export type HasVacationRentalPermitEnum = "True" | "False" | "UNKNOWN";
         export type Itinerary = {
             readonly id: number
@@ -150,7 +152,6 @@ declare namespace Components {
                 first_name: string
                 last_name: string
                 full_name: string
-                team_settings: UserTeamSettingsId[]
             }
         }
         export type Note = {
@@ -163,7 +164,6 @@ declare namespace Components {
                 first_name: string
                 last_name: string
                 full_name: string
-                team_settings: UserTeamSettingsId[]
             }
         }
         export type NoteCrud = {
@@ -177,9 +177,9 @@ declare namespace Components {
                 first_name: string
                 last_name: string
                 full_name: string
-                team_settings: UserTeamSettingsId[]
             }
         }
+        export type NullEnum = null;
         export type OIDCAuthenticate = {
             code: string
         }
@@ -368,7 +368,7 @@ declare namespace Components {
                 readonly observation_choices: Observation[]
                 readonly situation_choices: any[]
                 readonly suggest_next_visit_choices: SuggestNextVisit[]
-                fraud_predict?: boolean
+                fraud_prediction_model?: FraudPredictionModelEnum | BlankEnum | NullEnum
                 readonly marked_stadia: StadiumLabel[]
                 show_issuemelding?: boolean
                 show_vakantieverhuur?: boolean
@@ -408,7 +408,6 @@ declare namespace Components {
                 first_name: string
                 last_name: string
                 full_name: string
-                team_settings: UserTeamSettingsId[]
             }
         }
         export type PatchedObservation = {
@@ -498,7 +497,7 @@ declare namespace Components {
             readonly observation_choices: Observation[]
             readonly situation_choices: any[]
             readonly suggest_next_visit_choices: SuggestNextVisit[]
-            fraud_predict?: boolean
+            fraud_prediction_model?: FraudPredictionModelEnum | BlankEnum | NullEnum
             readonly marked_stadia: StadiumLabel[]
             show_issuemelding?: boolean
             show_vakantieverhuur?: boolean
@@ -510,10 +509,6 @@ declare namespace Components {
             first_name: string
             last_name: string
             full_name: string
-            team_settings: UserTeamSettingsId[]
-        }
-        export type UserTeamSettingsId = {
-            readonly id: number
         }
         export type VakantieverhuurMelding = {
             is_afmelding: boolean
@@ -552,7 +547,6 @@ declare namespace Components {
                 first_name: string
                 last_name: string
                 full_name: string
-                team_settings: UserTeamSettingsId[]
             }
         }
     }
